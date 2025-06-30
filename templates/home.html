@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Ticket Prediction</title>
+    <style>
+        body {
+            background-color: hsl(34, 56%, 48%);
+            font-family: Arial, sans-serif;
+        }
+
+        .login {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgb(104, 221, 230);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(85, 179, 205, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .form-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .mb-3 {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #b76807;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e6830f;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>Customer Ticket Prediction</h1>
+        <form action="{{ url_for('predict') }}" method="post">
+            <div class="form-column">
+                <div class="mb-3">
+                    <label class="form-label">Customer Name</label>
+                    <input class="form-control" type="text" name="CustomerName" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Customer Email</label>
+                    <input class="form-control" type="email" name="CustomerEmail" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Customer Age</label>
+                    <input class="form-control" type="number" name="CustomerAge" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Customer Gender</label>
+                    <select class="form-control" name="CustomerGender" required>
+                        <option disabled selected value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Product Purchased</label>
+                    <input class="form-control" type="text" name="ProductPurchased" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ticket Type</label>
+                    <input class="form-control" type="text" name="TicketType" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ticket Subject</label>
+                    <input class="form-control" type="text" name="TicketSubject" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ticket Status</label>
+                    <input class="form-control" type="text" name="TicketStatus" required>
+                </div>
+            </div>
+
+            <div class="form-column">
+                <div class="mb-3">
+                    <label class="form-label">Resolution</label>
+                    <input class="form-control" type="text" name="Resolution" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ticket Priority</label>
+                    <input class="form-control" type="text" name="TicketPriority" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ticket Channel</label>
+                    <input class="form-control" type="text" name="TicketChannel" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Purchase Year</label>
+                    <input class="form-control" type="number" name="Purchase_Year" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Purchase Month</label>
+                    <input class="form-control" type="number" name="Purchase_Month" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Response Hour</label>
+                    <input class="form-control" type="number" name="Response_Hour" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Resolution Hour</label>
+                    <input class="form-control" type="number" name="Resolution_Hour" required>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <input class="btn" type="submit" value="Predict">
+            </div>
+        </form>
+        <h2>Prediction: {{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
